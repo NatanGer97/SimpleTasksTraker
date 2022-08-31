@@ -15,19 +15,30 @@ const taskSlice = createSlice({
 
     },
 
-    test(state)
-    {
-      console.log('test');
-    },
-
-
     removeTask(state, action)
     {
-      console.log('delete');
-        const taskId = action.payload;
-        state.tasks = state.tasks.filter((task) => task.id !== taskId);
+      console.log('lll');
+      const taskId = Number(action.payload)
+      console.log(typeof taskId);
+      const arr = state.tasks.filter((task) => task.id !== taskId);
+      state.tasks = arr;
+     
 
     },
+
+    test(state,action)
+    {
+      console.log('test');
+      // const taskId = action.payload;
+      // console.log(taskId);
+      
+      //  const fitting = state.tasks.filter((task) => task.id !== taskId);
+      //  state.tasks = fitting;
+      //  console.log(state.tasks);
+    },
+
+
+
 
     replaceTask(state,action)
     {
@@ -59,7 +70,6 @@ const taskSlice = createSlice({
         state.totalTasks = state.totalTasks + 1;
     },
 
-    removeTask(state, action) {},
   },
 });
 

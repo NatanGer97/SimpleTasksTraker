@@ -19,8 +19,9 @@ const TaskDetails = (props) => {
   function onDeleteHandler()
   {
     console.log("Delete");
-    dispatch(taskSlice.actions.removeTask({taskId}));
-    // dispatch(taskSlice.actions.test());
+    dispatch(taskSlice.actions.removeTask(taskId));
+    navigate('/tasks')
+    // dispatch(taskSlice.actions.removeTask(taskId));
   }
 
   return (
