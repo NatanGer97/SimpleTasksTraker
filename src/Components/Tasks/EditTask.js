@@ -51,7 +51,7 @@ const [content, setContent] = useState(task.content);
       id: taskId,
       title: title ? title : titleInputRef.current.value,
       content: content ? content : contentInputRef.current.value,
-      status: taskDone ,
+      status: taskDone,
     }));
 
     navigate('/tasks');
@@ -87,7 +87,7 @@ const [content, setContent] = useState(task.content);
             />
             <label for="floatingContent">{task.content}</label>
           </div>
-          <div className="form-check form-switch">
+          <div className="form-check form-switch m-2">
             <input
             ref={taskStatusRef}
               className="form-check-input"
@@ -100,8 +100,8 @@ const [content, setContent] = useState(task.content);
               {taskDone ? "Done": "In-Progress"}
             </label>
             </div>
-          <div className="p-4">
-            <button >save</button>
+          <div className="p-2">
+            <button className="btn btn-outline-primary">save changes</button>
           </div>
         </form>
       </Card.Body>

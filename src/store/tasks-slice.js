@@ -15,6 +15,20 @@ const taskSlice = createSlice({
 
     },
 
+    test(state)
+    {
+      console.log('test');
+    },
+
+
+    removeTask(state, action)
+    {
+      console.log('delete');
+        const taskId = action.payload;
+        state.tasks = state.tasks.filter((task) => task.id !== taskId);
+
+    },
+
     replaceTask(state,action)
     {
         const task = action.payload;
