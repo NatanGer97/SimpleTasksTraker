@@ -8,8 +8,8 @@ const TaskItem = (props) =>
         <th scope="row">{props.task.id}</th>
         <td>{props.task.title}</td>
         <td>{props.task.content}</td>
-        <td> {props.task.status} </td>
-        <td> <Link to={`${props.task.id}` } >info</Link> </td>
+        <td> {props.task.status ? "Done" : "In-Progress"} </td>
+        <td> <Link to={`${props.task.id}` }>view</Link> </td>
       </tr>
     );
 };

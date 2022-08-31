@@ -12,41 +12,46 @@ function EditTask() {
   const tasks = useSelector((state) => state.task_slice.tasks);
   const titleInputRef = useRef();
   const contentInputRef = useRef();
-  const [isTitleChanged, setIsTitleChanged] = useState(false);
-  const [isContentChanged, setIsContentChanged] = useState(false);
-  const [isButtonDisable, setIsButtonDisable] = useState(true);
-  const [title, setTitle] = useState();
-  const [content, setContent] = useState();
+  const taskStatusRef = useRef(); 
+
   let task;
+
   if (taskId) {
     task = tasks.filter((task) => task.id == taskId);
     task = task[0];
+    console.log(task);
     
   }
+const [taskDone, setTaskDone] = useState(task.status);
+const [title, setTitle] = useState(task.title);
+const [content, setContent] = useState(task.content);
 
+
+  function onSwitchChanged(event) {
+    setTaskDone(!taskDone);
+  }
 
   function onTitleChangedHandler(event) {
-    console.log(`Task-title:${task.title}`);
     setTitle(event.target.value.trim());
  
    
   }
 
   function onContentChangeHandler(event) {
-    console.log(`Task-content:${task.content}`);
+    // console.log(`Task-content:${task.content}`);
     setContent(event.target.value.trim());
 
   }
 
- 
-
   function onSubmitHandler(event) {
     event.preventDefault();
+    console.log(task.status);
       
     dispatch(taskSlice.actions.replaceTask({
       id: taskId,
-      title: titleInputRef.current.value,
-      content: contentInputRef.current.value,
+      title: title ? title : titleInputRef.current.value,
+      content: content ? content : contentInputRef.current.value,
+      status: taskDone ,
     }));
 
     navigate('/tasks');
@@ -63,9 +68,8 @@ function EditTask() {
             ref={titleInputRef}
               type="text"
               class="form-control"
-              id="floatingTitle"
-              
-              defaultValue= {task.title}
+              id="floatingTitle"              
+              defaultValue={task.title}
               onChange={onTitleChangedHandler}
             />
             <label for="floatingTitle">{task.title}</label>
@@ -83,6 +87,19 @@ function EditTask() {
             />
             <label for="floatingContent">{task.content}</label>
           </div>
+          <div className="form-check form-switch">
+            <input
+            ref={taskStatusRef}
+              className="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckChecked"
+              onChange={onSwitchChanged}
+              checked={taskDone}
+            />
+            <label className="form-check-label" for="flexSwitchCheckChecked">
+              {taskDone ? "Done": "In-Progress"}
+            </label>
+            </div>
           <div className="p-4">
             <button >save</button>
           </div>

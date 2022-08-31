@@ -29,7 +29,7 @@ const NewTask = (props) => {
   function submitHandler(event) {
     event.preventDefault();
     console.log("Submitted");
-    const taskStatus = taskIsDone ? "done" : "in-progress";
+    const taskStatus = taskIsDone;
 
     dispatch(
       taskSlice.actions.addTask({
