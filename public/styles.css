@@ -1,0 +1,19 @@
+
+.header 
+{
+    width: 100%;
+    /* background-color: transparent; */
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+
+}
+.drawer 
+{
+    background-color: rgb(212, 230, 241);
+}
+
+.navbar-brand{
+    color: whitesmoke !important;
+    /* color: rgb(0, 0, 0)!important; */
+    padding-left: 50%;
+
+}
