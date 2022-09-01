@@ -26,16 +26,7 @@ const taskSlice = createSlice({
 
     },
 
-    test(state,action)
-    {
-      console.log('test');
-      // const taskId = action.payload;
-      // console.log(taskId);
-      
-      //  const fitting = state.tasks.filter((task) => task.id !== taskId);
-      //  state.tasks = fitting;
-      //  console.log(state.tasks);
-    },
+ 
 
 
 
