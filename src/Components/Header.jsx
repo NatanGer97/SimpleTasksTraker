@@ -5,10 +5,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "../Components/header.module.css";
 
 function Header() {
+  const navigate = useNavigate();
+  function logoutHandler()
+  {
+    localStorage.removeItem("token");
+    navigate('/');
+    
+  }
   return (
     <section className={classes.header}>
       <Navbar key={false} expand={false} className="mb-3 shadow">
@@ -28,7 +35,13 @@ function Header() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Link to={"/"}>Home</Link>
-                <Nav.Link href="#action2">Link</Nav.Link>
+                <Link to={"/sign-up"}>Sign-Up</Link>
+                {/* <Nav.Link href="#action2">Link</Nav.Link> */}
+                {localStorage.getItem("token")  && (
+                  <Nav.Link variant="link"
+                    onClick={logoutHandler}
+                  >Logout</Nav.Link >
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
